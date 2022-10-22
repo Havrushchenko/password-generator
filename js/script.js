@@ -14,19 +14,18 @@ function generatePassword() {
   alert("Your password will have " + confirmLength + " characters!");
   var userSelections = getUserSelections(passwordCharacters);
   if (!userSelections.confirmUpperCase && !userSelections.confirmLowerCase && !userSelections.confirmSpecialCharacter && !userSelections.confirmNumericCharacter) {
-  alert("You must choose at least one parameter");
-  return generatePassword();
-  userSelections = getUserSelections(passwordCharacters);
-
+    alert("You must choose at least one parameter");
+    return generatePassword();
+    userSelections = getUserSelections(passwordCharacters);
   } else {
     console.log(userSelections.passwordCharacters);
-
     for (var i = 0; i < confirmLength; i++) {
       randomPassword = randomPassword + userSelections.passwordCharacters[Math.floor(Math.random() * userSelections.passwordCharacters.length)];
     }
   }
   return randomPassword;
 }
+
 function getUserSelections(passwordCharacters) {
   var confirmSpecialCharacter = confirm("Click 'OK' to confirm if you would like to include special characters.");
   if (confirmSpecialCharacter) {
@@ -44,7 +43,7 @@ function getUserSelections(passwordCharacters) {
   if (confirmUpperCase) {
     passwordCharacters = passwordCharacters.concat(upperCase)
   }
-  return {passwordCharacters, confirmLowerCase, confirmNumericCharacter, confirmSpecialCharacter, confirmUpperCase};
+  return { passwordCharacters, confirmLowerCase, confirmNumericCharacter, confirmSpecialCharacter, confirmUpperCase };
 }
 
 document.querySelector("#generate").addEventListener("click", writePassword);
